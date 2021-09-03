@@ -5,7 +5,13 @@ import getWeb3 from "./getWeb3";
 import "./App.css";
 
 class App extends Component {
-  state = { web3: null, accounts: null, aaveContract: null };
+  state = { 
+    web3: null, 
+    accounts: null, 
+    aaveContract: null, 
+    amount: null, 
+    asset: null 
+  };
 
   componentDidMount = async () => {
     try {
@@ -35,6 +41,26 @@ class App extends Component {
     }
   };
 
+  onSubmitDeposit = async (event) => {
+    event.preventDefault();
+    const { aaveContract, asset, amount, web3, accounts } = this.state ;
+    await aaveContract.methods.deposit(asset, web3.utils.toWei(new web3.utils.BN(amount), "ether")).send({
+      from: accounts[0]
+    })
+  }
+
+  onSubmitWithdraw = async (event) => {
+    event.preventDefault();
+    const { aaveContract, asset, amount, web3, accounts } = this.state ;
+    await aaveContract.methods.withdraw(asset, web3.utils.toWei(amount, "ether")).send({
+      from: accounts[0]
+    })
+  }
+
+  handleChange = (event) => {
+    this.setState({asset: event.target.value});
+  }
+
   render() {
     if (!this.state.web3) {
       return <div>Loading Web3, accounts, and contract...</div>;
@@ -42,11 +68,38 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Aave Manager Contract</h1>
+        <h2>Deposit</h2>
         <p>With this UI you can deposit and withdraw inside aave protocol</p>
-        <label>Amount: </label>
-        <input
-          onChange={event => this.setState({ value: event.target.value })}
-        ></input>
+        <form onSubmit={this.onSubmitDeposit}>
+          <label>Pick the asset:</label>
+          <select value={this.state.asset}
+          onChange={this.handleChange}
+          >
+            <option selected value="0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD">DAI</option>
+            <option value="0xe22da380ee6B445bb8273C81944ADEB6E8450422">USDC</option>
+          </select>
+          <label>Amount: </label>
+          <input
+            value={this.state.amount}
+            onChange={event => this.setState({ amount: event.target.value })}
+          ></input>
+          <button>Enter</button>
+        </form>
+        <h2>withdraw</h2>
+        <form onSubmit={this.onSubmitWithdraw}>
+          <label>Pick the asset:</label>
+          <select value={this.state.asset} onChange={this.handleChange}>
+            <option selected value="0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD">DAI</option>
+            <option value="0xe22da380ee6B445bb8273C81944ADEB6E8450422">USDC</option>
+          </select>
+          <label>Amount: </label>
+          <input
+            value={this.state.amount}
+            onChange={event => this.setState({ value: event.target.value })}
+          ></input>
+          <button>Enter</button>
+        </form>
+
       </div>
     );
   }
