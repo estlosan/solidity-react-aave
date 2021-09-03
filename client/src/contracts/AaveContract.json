@@ -1,0 +1,219 @@
+{
+  "contractName": "AaveContract",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/esteban/Escritorio/solidity/solidity-react-aave/contracts/AaveContract.sol\":\"AaveContract\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/esteban/Escritorio/solidity/solidity-react-aave/contracts/AaveContract.sol\":{\"keccak256\":\"0x360985afae8a8ed2dbde8e93b5fd788026e20fac2556339b5975eb73ccb06029\",\"urls\":[\"bzz-raw://01d50cedf177d6486370b2144a1c40307b7f07c7f6cbee975c8ee8a6dca678b8\",\"dweb:/ipfs/QmUrDVe9mxfpAHdfozfaBHS7ErffTzQv3uRNQfeKLHGNrA\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212203508aada02f959215673c5b354b48312208178486046df7a76e09a19cfbf086564736f6c634300060c0033",
+  "deployedBytecode": "0x6080604052600080fdfea26469706673582212203508aada02f959215673c5b354b48312208178486046df7a76e09a19cfbf086564736f6c634300060c0033",
+  "immutableReferences": {},
+  "sourceMap": "26:69:0:-:0;;;65:28;;;;;;;;;;26:69;;;;;;",
+  "deployedSourceMap": "26:69:0:-:0;;;;;",
+  "source": "pragma solidity ^0.6.12;\n\ncontract AaveContract {\n    \n\n    \n    constructor() public {\n    }\n}\n\n",
+  "sourcePath": "/home/esteban/Escritorio/solidity/solidity-react-aave/contracts/AaveContract.sol",
+  "ast": {
+    "absolutePath": "/home/esteban/Escritorio/solidity/solidity-react-aave/contracts/AaveContract.sol",
+    "exportedSymbols": {
+      "AaveContract": [
+        6
+      ]
+    },
+    "id": 7,
+    "license": null,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.6",
+          ".12"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:0"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 6,
+        "linearizedBaseContracts": [
+          6
+        ],
+        "name": "AaveContract",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 4,
+              "nodeType": "Block",
+              "src": "86:7:0",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 5,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 2,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "76:2:0"
+            },
+            "returnParameters": {
+              "id": 3,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "86:0:0"
+            },
+            "scope": 6,
+            "src": "65:28:0",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 7,
+        "src": "26:69:0"
+      }
+    ],
+    "src": "0:97:0"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/home/esteban/Escritorio/solidity/solidity-react-aave/contracts/AaveContract.sol",
+      "exportedSymbols": {
+        "AaveContract": [
+          6
+        ]
+      },
+      "license": null
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.6",
+            ".12"
+          ]
+        },
+        "id": 1,
+        "name": "PragmaDirective",
+        "src": "0:24:0"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            6
+          ],
+          "name": "AaveContract",
+          "scope": 7
+        },
+        "children": [
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": true,
+              "kind": "constructor",
+              "modifiers": [
+                null
+              ],
+              "name": "",
+              "overrides": null,
+              "scope": 6,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 2,
+                "name": "ParameterList",
+                "src": "76:2:0"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3,
+                "name": "ParameterList",
+                "src": "86:0:0"
+              },
+              {
+                "attributes": {
+                  "statements": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4,
+                "name": "Block",
+                "src": "86:7:0"
+              }
+            ],
+            "id": 5,
+            "name": "FunctionDefinition",
+            "src": "65:28:0"
+          }
+        ],
+        "id": 6,
+        "name": "ContractDefinition",
+        "src": "26:69:0"
+      }
+    ],
+    "id": 7,
+    "name": "SourceUnit",
+    "src": "0:97:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.6.12+commit.27d51765.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2021-09-03T22:22:52.227Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
