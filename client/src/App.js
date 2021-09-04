@@ -11,6 +11,9 @@ class App extends Component {
     aaveContract: null, 
     amount: '', 
     asset: '' ,
+    assetWithd: '',
+    newAsset: '',
+    liqAmount:''
   };
 
   componentDidMount = async () => {
@@ -57,15 +60,30 @@ class App extends Component {
 
   onSubmitWithdraw = async (event) => {
     event.preventDefault();
-    const { aaveContract, asset, amount, web3, accounts } = this.state ;
-    await aaveContract.methods.withdraw(asset, web3.utils.toWei(amount, "ether")).send({
-      from: accounts[0]
-    })
+    const { aaveContract, assetWithd , newAsset, amount, web3, accounts } = this.state ;
+
+    console.log(assetWithd)
+    console.log(newAsset)
+    try{
+      await aaveContract.methods.withdrawAndAddLiquidity(newAsset, web3.utils.toWei(amount, "ether")).send({
+        from: accounts[0]
+      });
+    } catch (error) {
+      alert(error);
+    }
     
   }
 
   handleChange = (event) => {
     this.setState({asset: event.target.value || ''});
+  }
+
+  handleChangeWithdr = (event) => {
+    this.setState({assetWithd: event.target.value || ''});
+  }
+
+  handleChangeNew = (event) => {
+    this.setState({newAsset: event.target.value || ''});
   }
 
   render() {
@@ -91,6 +109,34 @@ class App extends Component {
           <input
             value={this.state.amount}
             onChange={event => this.setState({ amount: event.target.value })}
+          ></input>
+          <button>Enter</button>
+        </form>
+
+        <p>In this part you can extract deposited assets in aave and add liquidity to uniswap</p>
+        <form onSubmit={this.onSubmitDeposit}>
+          <label>Extract Asset:</label>
+          <select value={this.state.assetWithd}
+          onChange={this.handleChangeWithdr}
+          value={this.state.assetWithd}
+          >
+            <option value="">--------</option>
+            <option value="0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD">DAI</option>
+            <option value="0xe22da380ee6B445bb8273C81944ADEB6E8450422">USDC</option>
+          </select>
+          <label>New liquidity asset:</label>
+          <select value={this.state.newAsset}
+          onChange={this.handleChangeNew}
+          value={this.state.newAsset}
+          >
+            <option value="">--------</option>
+            <option value="0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD">DAI</option>
+            <option value="0xe22da380ee6B445bb8273C81944ADEB6E8450422">USDC</option>
+          </select>
+          <label>Amount: </label>
+          <input
+            value={this.state.liqAmount}
+            onChange={event => this.setState({ liqAmount: event.target.value })}
           ></input>
           <button>Enter</button>
         </form>
