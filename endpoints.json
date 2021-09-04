@@ -1,9 +1,3 @@
 {
-  "ropsten": "https://ropsten.infura.io/v3/40aaa5d449714813a90b2439635adbb9",
-  "rinkeby": "https://eth-rinkeby.alchemyapi.io/v2/F-C6Mg-apyR9znW0JeaqpYnUlm8uzKS8",
-  "kovan": "https://kovan.infura.io/v3/00cfc467ae9e4aa885024e0302a58a0c",
-  "goerli": "https://eth-goerli.alchemyapi.io/v2/PY26tgjC0F6dqEbVvmP2VvbfY-RHvPG7",
-  "stars": "http://34.90.131.163:7545",
-  "testnet": "http://35.202.3.132:8545",
-  "advanced": "http://localhost:8545"
+  "kovan": "https://kovan.infura.io/v3/00cfc467ae9e4aa885024e0302a58a0c"
 }
