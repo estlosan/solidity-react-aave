@@ -25,7 +25,28 @@
       "type": "function"
     },
     {
-      "inputs": [],
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "withdAsset",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "liqAsset",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "withdAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "liqAmount",
+          "type": "uint256"
+        }
+      ],
       "name": "withdrawAndAddLiquidity",
       "outputs": [
         {
@@ -238,7 +259,7 @@
     "42": {
       "events": {},
       "links": {},
-      "address": "0x4B36999E141073012d9282ebed76932fc41C25Ee",
+      "address": "0xFE80994672C25bd961753B9500a698df7cee90d8",
       "transactionHash": "0x9c2cd894d8a174308f77d58e8cf79b76d520fdb5a4640f1d926595044d3c5049"
     }
   },

@@ -97,8 +97,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Aave Manager Contract</h1>
-        <h2>Deposit</h2>
         <p>With this UI you can deposit and withdraw inside aave protocol</p>
+        <h2>Deposit</h2>
+        <p>In this part you can deposit assets in aave</p>
         <form onSubmit={this.onSubmitDeposit}>
           <label>Pick the asset:</label>
           <select value={this.state.asset}
@@ -117,6 +118,7 @@ class App extends Component {
           <button>Enter</button>
         </form>
 
+        <h2>withdraw</h2>
         <p>In this part you can extract deposited assets in aave and add liquidity to uniswap</p>
         <form onSubmit={this.onSubmitDeposit}>
           <label>Extract Asset:</label>
@@ -144,7 +146,6 @@ class App extends Component {
           ></input>
           <button>Enter</button>
         </form>
-        <h2>withdraw</h2>
 
       </div>
     );
