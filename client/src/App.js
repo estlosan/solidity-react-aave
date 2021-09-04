@@ -74,6 +74,10 @@ class App extends Component {
     
   }
 
+  handleWeb3Approve = () => {
+    // TODO handle approve method
+  }
+
   handleChange = (event) => {
     this.setState({asset: event.target.value || ''});
   }

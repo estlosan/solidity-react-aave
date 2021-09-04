@@ -3,12 +3,9 @@ import "@aave/protocol-v2/contracts/interfaces/ILendingPoolAddressesProvider.sol
 import "@aave/protocol-v2/contracts/interfaces/ILendingPool.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-
-
 pragma solidity ^0.6.12;
 
-contract AaveContract {
-    
+contract AaveTask {
     
     ILendingPoolAddressesProvider provider;
     ILendingPool lendingPool;
@@ -27,21 +24,21 @@ contract AaveContract {
         lendingPool.deposit(asset, amount, address(this), 0);
     }
     
-    function withdrawAndAddLiquidity() external returns(uint) {
-        uint amount = lendingPool.withdraw(0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD, 100000000, address(this));
+    function withdrawAndAddLiquidity(address withdAsset, address liqAsset, uint withdAmount, uint liqAmount ) external returns(uint) {
+        uint amount = lendingPool.withdraw(withdAsset, withdAmount, address(this));
         
-        address tokenA = 0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD;
-        address tokenB = 0xe22da380ee6B445bb8273C81944ADEB6E8450422;
-        IERC20(tokenB).transferFrom(msg.sender, address(this), 100000000);
+        address tokenA = withdAsset;
+        address tokenB = liqAsset;
+        IERC20(tokenB).transferFrom(msg.sender, address(this), liqAmount);
         
         IERC20(tokenA).approve(address(router), amount);
-        IERC20(tokenB).approve(address(router), 100000000);
+        IERC20(tokenB).approve(address(router), liqAmount);
         
         router.addLiquidity(
             tokenA,
             tokenB,
-            10000,
-            10000,
+            amount,
+            liqAmount,
             1,
             1,
             address(this),
