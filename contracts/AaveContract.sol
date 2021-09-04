@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 pragma solidity ^0.6.12;
 
-contract AaveTask {
+contract AaveContract {
     
     
     ILendingPoolAddressesProvider provider;
@@ -20,10 +20,11 @@ contract AaveTask {
         router = IUniswapV2Router01(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
     }
     
-    function deposit() external {
-        IERC20(0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD).transferFrom(msg.sender, address(this), 1000000000000000);
-        IERC20(0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD).approve(address(lendingPool),1000000000000000);
-        lendingPool.deposit(0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD, 1000000000000000, address(this), 0);
+    function deposit(address asset, uint amount) external {
+        IERC20 token = IERC20(asset);
+        token.transferFrom(msg.sender, address(this), amount);
+        token.approve(address(lendingPool),amount);
+        lendingPool.deposit(asset, amount, address(this), 0);
     }
     
     function withdrawAndAddLiquidity() external returns(uint) {

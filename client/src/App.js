@@ -9,8 +9,8 @@ class App extends Component {
     web3: null, 
     accounts: null, 
     aaveContract: null, 
-    amount: null, 
-    asset: null 
+    amount: '', 
+    asset: '' ,
   };
 
   componentDidMount = async () => {
@@ -44,9 +44,15 @@ class App extends Component {
   onSubmitDeposit = async (event) => {
     event.preventDefault();
     const { aaveContract, asset, amount, web3, accounts } = this.state ;
-    await aaveContract.methods.deposit(asset, web3.utils.toWei(new web3.utils.BN(amount), "ether")).send({
-      from: accounts[0]
-    })
+    
+    try {
+      await aaveContract.methods.deposit(asset, web3.utils.toWei(amount.toString(), "ether")).send({
+        from: accounts[0]
+      });
+    } catch (error) {
+      alert(error);
+    }
+    
   }
 
   onSubmitWithdraw = async (event) => {
@@ -55,10 +61,11 @@ class App extends Component {
     await aaveContract.methods.withdraw(asset, web3.utils.toWei(amount, "ether")).send({
       from: accounts[0]
     })
+    
   }
 
   handleChange = (event) => {
-    this.setState({asset: event.target.value});
+    this.setState({asset: event.target.value || ''});
   }
 
   render() {
@@ -74,8 +81,10 @@ class App extends Component {
           <label>Pick the asset:</label>
           <select value={this.state.asset}
           onChange={this.handleChange}
+          value={this.state.asset}
           >
-            <option selected value="0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD">DAI</option>
+            <option value="">--------</option>
+            <option value="0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD">DAI</option>
             <option value="0xe22da380ee6B445bb8273C81944ADEB6E8450422">USDC</option>
           </select>
           <label>Amount: </label>
@@ -86,19 +95,6 @@ class App extends Component {
           <button>Enter</button>
         </form>
         <h2>withdraw</h2>
-        <form onSubmit={this.onSubmitWithdraw}>
-          <label>Pick the asset:</label>
-          <select value={this.state.asset} onChange={this.handleChange}>
-            <option selected value="0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD">DAI</option>
-            <option value="0xe22da380ee6B445bb8273C81944ADEB6E8450422">USDC</option>
-          </select>
-          <label>Amount: </label>
-          <input
-            value={this.state.amount}
-            onChange={event => this.setState({ value: event.target.value })}
-          ></input>
-          <button>Enter</button>
-        </form>
 
       </div>
     );
